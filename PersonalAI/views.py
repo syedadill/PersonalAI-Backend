@@ -27,10 +27,10 @@ class ProfileDetailView(generics.RetrieveUpdateAPIView):
 
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-import openai
+import openai, os
 from AIAssistant.settings import OPENAI_API_KEY
 
-openai.api_key = OPENAI_API_KEY
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 @csrf_exempt
 def ai_response(request):
