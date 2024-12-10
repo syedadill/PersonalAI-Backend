@@ -27,10 +27,9 @@ class ProfileDetailView(generics.RetrieveUpdateAPIView):
 
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-import openai, os
-from AIAssistant.settings import OPENAI_API_KEY
+import os
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 @csrf_exempt
 def ai_response(request):
@@ -53,7 +52,7 @@ def ai_response(request):
 
         try:
             # Use the new API syntax
-            response = openai.Completion.create(
+            response = OPENAI_API_KEY.Completion.create(
                 model="gpt-3.5-turbo",  # or any other model you are using
                 prompt=prompt,
                 max_tokens=150
