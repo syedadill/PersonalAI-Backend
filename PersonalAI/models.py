@@ -14,6 +14,7 @@ class Profile(models.Model):
     education = models.CharField(max_length=255, null=True)
     work_history = models.TextField(null=True)
     hobbies = models.TextField(null=True)
+    
 
     def __str__(self):
         return f"{self.user.username}'s Profile"

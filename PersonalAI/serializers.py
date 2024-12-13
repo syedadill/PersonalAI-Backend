@@ -49,6 +49,7 @@ class FamilyMemberSerializer(serializers.ModelSerializer):
     class Meta:
         model = FamilyMember
         fields = '__all__'
+        
 
 class DailyTaskSerializer(serializers.ModelSerializer):
     class Meta:
@@ -145,7 +146,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Profile
-        fields = ['__all__']
+        fields = '__all__'
 
 
     def create(self, validated_data):
