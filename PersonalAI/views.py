@@ -14,50 +14,33 @@ class RegisterView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
 
 
-class ProfileDetailView(generics.RetrieveUpdateAPIView):
-    queryset = Profile.objects.all()
-    serializer_class = ProfileSerializer
-    permission_classes = [IsAuthenticated]
+# class ProfileDetailView(generics.RetrieveUpdateAPIView):
+#     queryset = Profile.objects.all()
+#     serializer_class = ProfileSerializer
+#     permission_classes = [IsAuthenticated]
 
-    def get_object(self):
-        return self.request.user.profile
+#     def get_object(self):
+#         return self.request.user.profile
 
     
 
+from rest_framework.views import APIView
 
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-import os
+class OnboardingAPIView(APIView):
+    """
+    Handles onboarding data creation and retrieval.
+    """
+    def get(self, request):
+        # Retrieve all onboarding entries
+        onboarding_data = Profile.objects.all()
+        serializer = ProfileSerializer(onboarding_data, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+    def post(self, request):
+        # Create a new onboarding entry
+        serializer = ProfileSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@csrf_exempt
-def ai_response(request):
-    if request.method == "POST":
-        user_data = {
-            "assets": 5000,  # Replace with actual user data
-            "income": 3000,
-            "expenses": 2000,
-        }
-        query = request.POST.get("query")
-
-        prompt = f"""
-        You are a personal assistant. Here is the user's financial data:
-        Assets: ${user_data['assets']}
-        Income: ${user_data['income']}
-        Expenses: ${user_data['expenses']}
-
-        The user asked: {query}
-        """
-
-        try:
-            # Use the new API syntax
-            response = OPENAI_API_KEY.Completion.create(
-                model="gpt-3.5-turbo",  # or any other model you are using
-                prompt=prompt,
-                max_tokens=150
-            )
-
-            return JsonResponse({"response": response.choices[0].text.strip()})
-        except Exception as e:
-            return JsonResponse({"error": str(e)}, status=500)
