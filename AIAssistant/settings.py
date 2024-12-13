@@ -102,10 +102,10 @@ WSGI_APPLICATION = 'AIAssistant.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'aiassistant_2gt9',
-        'USER': 'adil',
-        'PASSWORD': 'W9QkVNiSkBMBf24bjPRApDqRZL1eciXA',
-        'HOST': 'dpg-ctds1b3v2p9s73c90oa0-a',  # Render's PostgreSQL host
+        'NAME': 'aiassistant_2gt9',  # Database name
+        'USER': 'adil',             # Username
+        'PASSWORD': 'W9QkVNiSkBMBf24bjPRApDqRZL1eciXA',  # Password
+        'HOST': 'dpg-ctds1b3v2p9s73c90oa0-a.oregon-postgres.render.com',  # External host
         'PORT': '5432',  # Default PostgreSQL port
     }
 }
