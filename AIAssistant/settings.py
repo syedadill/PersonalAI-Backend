@@ -101,8 +101,12 @@ WSGI_APPLICATION = 'AIAssistant.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'AI',
+        'USER': 'adil',
+        'PASSWORD': 'W9QkVNiSkBMBf24bjPRApDqRZL1eciXA',
+        'HOST': 'dpg-ctds1b3v2p9s73c90oa0-a',  # Render's PostgreSQL host
+        'PORT': '5432',  # Default PostgreSQL port
     }
 }
 
