@@ -1,0 +1,171 @@
+{
+    "user": {
+      "id": 1,
+      "username": "testuser",
+      "email": "testuser@example.com"
+    },
+    "profile": {
+        "full_name": "Test User",
+        "date_of_birth": "1990-01-01",
+        "address": "123 Main Street, Springfield",
+        "phone": "+1234567890",
+        "email": "testuser@example.com",
+        "nationality": "American",
+        "languages_spoken": "English, Spanish",
+        "education": "Bachelor's Degree in Computer Science",
+        "work_history": "Software Engineer at TechCorp",
+        "hobbies": "Reading, Hiking, Gaming",
+        "family_members": [
+            {
+            "id": 1,
+            "name": "Jane Doe",
+            "relationship": "Sister",
+            "birthday": "1992-05-12",
+            "notes": "Very close"
+            },
+            {
+            "id": 2,
+            "name": "John Doe",
+            "relationship": "Brother",
+            "birthday": "1988-09-23",
+            "notes": "Lives in another city"
+            }
+        ],
+
+        "tasks": [
+            {
+            "id": 1,
+            "date": "2024-12-13",
+            "time": "09:00:00",
+            "event": "Morning Jog",
+            "notes": "5km in the park"
+            },
+            {
+            "id": 2,
+            "date": "2024-12-13",
+            "time": "14:00:00",
+            "event": "Work Meeting",
+            "notes": "Discuss project milestones"
+            }
+        ],
+
+        "contacts": [
+            {
+            "id": 1,
+            "name": "Alice Smith",
+            "relation": "Friend",
+            "phone": "+1987654321",
+            "email": "alice@example.com"
+            }
+        ],
+
+        "financial_info": [
+            {
+            "id": 1,
+            "item": "Rent",
+            "monthly_amount": 1200.00,
+            "notes": "Due on the 1st of each month"
+            }
+        ],
+
+        "health_fitness": {
+            "health_goals": "Lose 10kg by summer",
+            "allergies": "Peanuts",
+            "medications": "Vitamin D supplements"
+        },
+
+        "travels": [
+            {
+            "id": 1,
+            "destination": "Paris, France",
+            "start_date": "2024-06-10",
+            "end_date": "2024-06-20",
+            "notes": "Vacation with family"
+            }
+        ],
+
+        "favorites": [
+            {
+            "id": 1,
+            "item_type": "Movie",
+            "favorite_item": "Inception"
+            }
+        ],
+
+        "digital_devices": [
+            {
+            "id": 1,
+            "device": "iPhone 14",
+            "device_type": "Smartphone",
+            "notes": "Work and personal use"
+            }
+        ],
+
+        "professional_info": {
+            "current_role": "Software Developer",
+            "certifications": "AWS Certified Solutions Architect"
+        },
+
+        "recent_updates": [
+            {
+            "id": 1,
+            "date": "2024-12-01",
+            "update": "Completed a new project on AI."
+            }
+        ],
+
+        "historical_events": [
+            {
+            "id": 1,
+            "event": "Graduated from University",
+            "date": "2015-06-15",
+            "notes": "Major milestone"
+            }
+        ],
+
+        "security_preferences": {
+            "emergency_contact": "Jane Doe",
+            "privacy_settings": "High"
+        },
+
+        "smart_home_devices": [
+            {
+            "id": 1,
+            "device": "Nest Thermostat",
+            "device_type": "Thermostat",
+            "notes": "Energy-saving mode enabled"
+            }
+        ],
+
+        "assets": [
+            {
+            "id": 1,
+            "asset_type": "Car",
+            "description": "Toyota Camry 2020",
+            "date_purchased": "2020-03-15",
+            "purchase_price": 25000.00,
+            "down_payment": 5000.00,
+            "interest_rate": 3.5,
+            "date_sold": null,
+            "sale_price": null,
+            "notes": "Well-maintained"
+            }
+        ],
+        
+        "insurances": [
+            {
+            "id": 1,
+            "insurance_type": "Health",
+            "provider": "BlueCross",
+            "policy_number": "ABC12345",
+            "start_date": "2022-01-01",
+            "end_date": "2023-12-31",
+            "premium": 300.00,
+            "coverage_details": "Covers dental and vision",
+            "linked_asset": null,
+            "notes": "Renewal due in December"
+            }
+        ]
+    }
+  }
+  
