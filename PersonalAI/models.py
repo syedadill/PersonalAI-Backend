@@ -3,7 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    #user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=255, null=True)
     last_name = models.CharField(max_length=255, null=True)
     date_of_birth = models.DateField(null=True)
@@ -17,8 +17,8 @@ class Profile(models.Model):
     hobbies = models.TextField(null=True)
     
 
-    def __str__(self):
-        return f"{self.user.username}'s Profile"
+    #def __str__(self):
+   #     return f"{self.user.username}'s Profile"
 
 # Family and Relationships
 class FamilyMember(models.Model):

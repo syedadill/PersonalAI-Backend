@@ -122,14 +122,14 @@ class InsuranceSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ProfSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Profile
-        field = '__all__'
+#class ProfSerializer(serializers.ModelSerializer):
+   # class Meta:
+      #  model = Profile
+       # field = '__all__'
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-    profile = ProfSerializer(many=True, required= False)
+    #profile = ProfSerializer(many=True, required= False)
     family_members = FamilyMemberSerializer(many=True, required=False)
     tasks = DailyTaskSerializer(many=True, required=False)
     contacts = ContactSerializer(many=True, required=False)
