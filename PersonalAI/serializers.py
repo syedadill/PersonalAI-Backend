@@ -35,7 +35,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.save()
         
         # Create a Profile instance for the new user
-        Profile.objects.create(user=user)
+        PersonalProfile.objects.create(user=user)
 
         return user
     
@@ -45,25 +45,35 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 
 
-class FamilyMemberSerializer(serializers.ModelSerializer):
+class EducationSerializer(serializers.ModelSerializer):
     class Meta:
-        model = FamilyMember
+        model = Education
         fields = '__all__'
         
 
-class DailyTaskSerializer(serializers.ModelSerializer):
+class WorkSerializer(serializers.ModelSerializer):
     class Meta:
-        model = DailyTask
+        model = Work
         fields = '__all__'
 
-class ContactSerializer(serializers.ModelSerializer):
+class FamilyRelationshipSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Contact
+        model = FamilyRelationship
         fields = '__all__'
 
-class FinancialInfoSerializer(serializers.ModelSerializer):
+class CarSerializer(serializers.ModelSerializer):
     class Meta:
-        model = FinancialInfo
+        model = Car
+        fields = '__all__'
+
+class RealEstateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RealEstate
+        fields = '__all__'
+
+class MortgageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Mortgage
         fields = '__all__'
 
 class HealthFitnessSerializer(serializers.ModelSerializer):
@@ -71,50 +81,26 @@ class HealthFitnessSerializer(serializers.ModelSerializer):
         model = HealthFitness
         fields = '__all__'
 
-class TravelSerializer(serializers.ModelSerializer):
+class TravelHistorySerializer(serializers.ModelSerializer):
     class Meta:
-        model = Travel
+        model = TravelHistory
         fields = '__all__'
 
-class FavoriteItemSerializer(serializers.ModelSerializer):
+class TravelMembershipSerializer(serializers.ModelSerializer):
     class Meta:
-        model = FavoriteItem
+        model = TravelMembership
         fields = '__all__'
 
-class DigitalDeviceSerializer(serializers.ModelSerializer):
+class PersonalPreferenceSerializer(serializers.ModelSerializer):
     class Meta:
-        model = DigitalDevice
+        model = PersonalPreference
         fields = '__all__'
 
-class ProfessionalInfoSerializer(serializers.ModelSerializer):
+class CelebrationSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ProfessionalInfo
+        model = Celebration
         fields = '__all__'
 
-class RecentUpdateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = RecentUpdate
-        fields = '__all__'
-
-class HistoricalEventSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = HistoricalEvent
-        fields = '__all__'
-
-class SecurityPreferenceSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = SecurityPreference
-        fields = '__all__'
-
-class SmartHomeDeviceSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = SmartHomeDevice
-        fields = '__all__'
-
-class AssetSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Asset
-        fields = '__all__'
 
 class InsuranceSerializer(serializers.ModelSerializer):
     class Meta:
@@ -127,62 +113,156 @@ class InsuranceSerializer(serializers.ModelSerializer):
       #  model = Profile
        # field = '__all__'
 
-
 class ProfileSerializer(serializers.ModelSerializer):
-    #profile = ProfSerializer(many=True, required= False)
-    family_members = FamilyMemberSerializer(many=True, required=False)
-    tasks = DailyTaskSerializer(many=True, required=False)
-    contacts = ContactSerializer(many=True, required=False)
-    financial_info = FinancialInfoSerializer(many=True, required=False)
-    health_fitness = HealthFitnessSerializer(required=False)
-    travels = TravelSerializer(many=True, required=False)
-    favorites = FavoriteItemSerializer(many=True, required=False)
-    digital_devices = DigitalDeviceSerializer(many=True, required=False)
-    professional_info = ProfessionalInfoSerializer(required=False)
-    recent_updates = RecentUpdateSerializer(many=True, required=False)
-    historical_events = HistoricalEventSerializer(many=True, required=False)
-    security_preferences = SecurityPreferenceSerializer(required=False)
-    smart_home_devices = SmartHomeDeviceSerializer(many=True, required=False)
-    assets = AssetSerializer(many=True, required=False)
-    insurances = InsuranceSerializer(many=True, required=False)
+    education = EducationSerializer(many=True, required=False)
+    work = WorkSerializer(many=True, required=False)
+    family_relationship = FamilyRelationshipSerializer(many=True, required=False)
+    car = CarSerializer(many=True, required=False)
+    real_estate = RealEstateSerializer(many=True, required=False)
+    mortgage = MortgageSerializer(many=True, required=False)
+    health_fitness = HealthFitnessSerializer(many=True, required=False)
+    travel_history = TravelHistorySerializer(many=True, required=False)
+    travel_membership = TravelMembershipSerializer(many=True, required=False)
+    personal_preference = PersonalPreferenceSerializer(many=True, required=False)
+    celebration = CelebrationSerializer(many=True, required=False)
+    insurance = InsuranceSerializer(many=True, required=False)
 
     class Meta:
-        model = Profile
+        model = PersonalProfile
         fields = '__all__'
-
 
     def create(self, validated_data):
         # Extract nested data
-        nested_data = {
-            "family_members": validated_data.pop('family_members', []),
-            "tasks": validated_data.pop('tasks', []),
-            "contacts": validated_data.pop('contacts', []),
-            "financial_info": validated_data.pop('financial_info', []),
-            "travels": validated_data.pop('travels', []),
-            "favorites": validated_data.pop('favorites', []),
-            "digital_devices": validated_data.pop('digital_devices', []),
-            "recent_updates": validated_data.pop('recent_updates', []),
-            "historical_events": validated_data.pop('historical_events', []),
-            "smart_home_devices": validated_data.pop('smart_home_devices', []),
-            "assets": validated_data.pop('assets', []),
-            "insurances": validated_data.pop('insurances', []),
-        }
+        education_data = validated_data.pop('education', [])
+        work_data = validated_data.pop('work', [])
+        family_relationship_data = validated_data.pop('family_relationship', [])
+        car_data = validated_data.pop('car', [])
+        real_estate_data = validated_data.pop('real_estate', [])
+        mortgage_data = validated_data.pop('mortgage', [])
+        health_fitness_data = validated_data.pop('health_fitness', [])
+        travel_history_data = validated_data.pop('travel_history', [])
+        travel_membership_data = validated_data.pop('travel_membership', [])
+        personal_preference_data = validated_data.pop('personal_preference', [])
+        celebration_data = validated_data.pop('celebration', [])
+        insurance_data = validated_data.pop('insurance', [])
 
-        # Create main onboarding instance
-        onboarding = Profile.objects.create(**validated_data)
+        # Create the main profile
+        profile = PersonalProfile.objects.create(**validated_data)
 
-        # Create related instances
-        for key, items in nested_data.items():
-            model = getattr(onboarding, key)
-            for item in items:
-                model.create(**item)
+        # Create related objects
+        self._create_related_objects(profile, education_data, work_data, family_relationship_data, 
+                                     car_data, real_estate_data, mortgage_data, health_fitness_data, 
+                                     travel_history_data, travel_membership_data, personal_preference_data, 
+                                     celebration_data, insurance_data)
+        
+        return profile
 
-        # Create one-to-one relations
-        if 'health_fitness' in validated_data:
-            HealthFitness.objects.create(onboarding=onboarding, **validated_data['health_fitness'])
-        if 'professional_info' in validated_data:
-            ProfessionalInfo.objects.create(onboarding=onboarding, **validated_data['professional_info'])
-        if 'security_preferences' in validated_data:
-            SecurityPreference.objects.create(onboarding=onboarding, **validated_data['security_preferences'])
+    def update(self, instance, validated_data):
+        # Extract nested data
+        education_data = validated_data.pop('education', None)
+        work_data = validated_data.pop('work', None)
+        family_relationship_data = validated_data.pop('family_relationship', None)
+        car_data = validated_data.pop('car', None)
+        real_estate_data = validated_data.pop('real_estate', None)
+        mortgage_data = validated_data.pop('mortgage', None)
+        health_fitness_data = validated_data.pop('health_fitness', None)
+        travel_history_data = validated_data.pop('travel_history', None)
+        travel_membership_data = validated_data.pop('travel_membership', None)
+        personal_preference_data = validated_data.pop('personal_preference', None)
+        celebration_data = validated_data.pop('celebration', None)
+        insurance_data = validated_data.pop('insurance', None)
 
-        return onboarding
+        # Update the main profile instance
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        instance.save()
+
+        # Update related objects if data is provided
+        self._update_related_objects(instance, education_data, work_data, family_relationship_data, 
+                                      car_data, real_estate_data, mortgage_data, health_fitness_data, 
+                                      travel_history_data, travel_membership_data, personal_preference_data, 
+                                      celebration_data, insurance_data)
+        
+        return instance
+
+    def _create_related_objects(self, profile, education_data, work_data, family_relationship_data, 
+                                 car_data, real_estate_data, mortgage_data, health_fitness_data, 
+                                 travel_history_data, travel_membership_data, personal_preference_data, 
+                                 celebration_data, insurance_data):
+        for education in education_data:
+            Education.objects.create(profile=profile, **education)
+        for work in work_data:
+            Work.objects.create(profile=profile, **work)
+        for family_relationship in family_relationship_data:
+            FamilyRelationship.objects.create(profile=profile, **family_relationship)
+        for car in car_data:
+            Car.objects.create(profile=profile, **car)
+        for real_estate in real_estate_data:
+            RealEstate.objects.create(profile=profile, **real_estate)
+        for mortgage in mortgage_data:
+            Mortgage.objects.create(profile=profile, **mortgage)
+        for health_fitness in health_fitness_data:
+            HealthFitness.objects.create(profile=profile, **health_fitness)
+        for travel_history in travel_history_data:
+            TravelHistory.objects.create(profile=profile, **travel_history)
+        for travel_membership in travel_membership_data:
+            TravelMembership.objects.create(profile=profile, **travel_membership)
+        for personal_preference in personal_preference_data:
+            PersonalPreference.objects.create(profile=profile, **personal_preference)
+        for celebration in celebration_data:
+            Celebration.objects.create(profile=profile, **celebration)
+        for insurance in insurance_data:
+            Insurance.objects.create(profile=profile, **insurance)
+
+    def _update_related_objects(self, instance, education_data, work_data, family_relationship_data, 
+                                car_data, real_estate_data, mortgage_data, health_fitness_data, 
+                                travel_history_data, travel_membership_data, personal_preference_data, 
+                                celebration_data, insurance_data):
+        if education_data is not None:
+            instance.education.all().delete()
+            for education in education_data:
+                Education.objects.create(profile=instance, **education)
+        if work_data is not None:
+            instance.work.all().delete()
+            for work in work_data:
+                Work.objects.create(profile=instance, **work)
+        if family_relationship_data is not None:
+            instance.family_relationship.all().delete()
+            for family_relationship in family_relationship_data:
+                FamilyRelationship.objects.create(profile=instance, **family_relationship)
+        if car_data is not None:
+            instance.car.all().delete()
+            for car in car_data:
+                Car.objects.create(profile=instance, **car)
+        if real_estate_data is not None:
+            instance.real_estate.all().delete()
+            for real_estate in real_estate_data:
+                RealEstate.objects.create(profile=instance, **real_estate)
+        if mortgage_data is not None:
+            instance.mortgage.all().delete()
+            for mortgage in mortgage_data:
+                Mortgage.objects.create(profile=instance, **mortgage)
+        if health_fitness_data is not None:
+            instance.health_fitness.all().delete()
+            for health_fitness in health_fitness_data:
+                HealthFitness.objects.create(profile=instance, **health_fitness)
+        if travel_history_data is not None:
+            instance.travel_history.all().delete()
+            for travel_history in travel_history_data:
+                TravelHistory.objects.create(profile=instance, **travel_history)
+        if travel_membership_data is not None:
+            instance.travel_membership.all().delete()
+            for travel_membership in travel_membership_data:
+                TravelMembership.objects.create(profile=instance, **travel_membership)
+        if personal_preference_data is not None:
+            instance.personal_preference.all().delete()
+            for personal_preference in personal_preference_data:
+                PersonalPreference.objects.create(profile=instance, **personal_preference)
+        if celebration_data is not None:
+            instance.celebration.all().delete()
+            for celebration in celebration_data:
+                Celebration.objects.create(profile=instance, **celebration)
+        if insurance_data is not None:
+            instance.insurance.all().delete()
+            for insurance in insurance_data:
+                Insurance.objects.create(profile=instance, **insurance)
