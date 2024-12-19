@@ -71,7 +71,6 @@ class Car(models.Model):
     year = models.IntegerField()
     vin = models.CharField(max_length=50)
     licence_plate = models.CharField(max_length=20)
-    color = models.CharField(max_length=20, null=True, blank=True)
     date_purchased = models.DateField()
     odometer_at_purchase = models.IntegerField()
     total_purchase_price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -114,7 +113,6 @@ class HealthFitness(models.Model):
     blood_type = models.CharField(max_length=5, null=True, blank=True)
     allergies = models.TextField(null=True, blank=True)
     medications = models.TextField(null=True, blank=True)
-    chronic_conditions = models.TextField(null=True, blank=True)
 
 
 # Travel History
@@ -123,7 +121,6 @@ class TravelHistory(models.Model):
     destination = models.CharField(max_length=100)
     date_start = models.DateField()
     date_end = models.DateField()
-    purpose = models.CharField(max_length=100, null=True, blank=True)
     notes = models.TextField(null=True, blank=True)
 
 # Travel Memberships
@@ -133,7 +130,6 @@ class TravelMembership(models.Model):
     company = models.CharField(max_length=100)
     membership_number = models.CharField(max_length=50)
     status = models.CharField(max_length=50)
-    rewards_balance = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     notes = models.TextField(null=True, blank=True)
 
 # Celebrations
