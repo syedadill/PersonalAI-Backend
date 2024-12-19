@@ -35,7 +35,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.save()
         
         # Create a Profile instance for the new user
-        PersonalProfile.objects.create(user=user)
+        #PersonalProfile.objects.create(user=user)
 
         return user
     
