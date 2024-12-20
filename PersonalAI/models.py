@@ -16,13 +16,13 @@ class PersonalProfile(models.Model):
 
 
     def __str__(self):
-        return f"{self.user.username}'s Profile"
+        return f"{self.first_name}'s Profile"
 
 
 
 # Education
 class Education(models.Model):
-#profile = models.ForeignKey(PersonalProfile, on_delete=models.CASCADE, related_name='education', blank=True, null=True)
+    #profile = models.ForeignKey(PersonalProfile, on_delete=models.CASCADE, related_name='education', blank=True, null=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True )
     date_start = models.DateField()
     date_end = models.DateField(null=True, blank=True)
@@ -38,7 +38,8 @@ class Education(models.Model):
 
 # Work Experience
 class Work(models.Model):
-    profile = models.ForeignKey(PersonalProfile, on_delete=models.CASCADE, related_name='work')
+  #profile = models.ForeignKey(PersonalProfile, on_delete=models.CASCADE, related_name='education', blank=True, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True )
     from_date = models.DateField()
     to_date = models.DateField(null=True, blank=True)
     position = models.CharField(max_length=100)
@@ -56,7 +57,8 @@ class Work(models.Model):
 
 # Family and Relationships
 class FamilyRelationship(models.Model):
-    profile = models.ForeignKey(PersonalProfile, on_delete=models.CASCADE, related_name='family')
+  #profile = models.ForeignKey(PersonalProfile, on_delete=models.CASCADE, related_name='education', blank=True, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True )
     name = models.CharField(max_length=100)
     relationship = models.CharField(max_length=50)
     birthday = models.DateField()
@@ -66,7 +68,8 @@ class FamilyRelationship(models.Model):
 
 # Cars
 class Car(models.Model):
-    profile = models.ForeignKey(PersonalProfile, on_delete=models.CASCADE, related_name='cars')
+  #profile = models.ForeignKey(PersonalProfile, on_delete=models.CASCADE, related_name='education', blank=True, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True )
     make = models.CharField(max_length=50)
     model = models.CharField(max_length=50)
     year = models.IntegerField()
@@ -82,7 +85,8 @@ class Car(models.Model):
 
 # Real Estate
 class RealEstate(models.Model):
-    profile = models.ForeignKey(PersonalProfile, on_delete=models.CASCADE, related_name='real_estate')
+  #profile = models.ForeignKey(PersonalProfile, on_delete=models.CASCADE, related_name='education', blank=True, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True )
     type = models.CharField(max_length=50)
     sq_ft = models.IntegerField()
     lot_size = models.IntegerField()
@@ -95,7 +99,8 @@ class RealEstate(models.Model):
 
 # Mortgage
 class Mortgage(models.Model):
-    real_estate = models.ForeignKey(RealEstate, on_delete=models.CASCADE, related_name='mortgage')
+  #profile = models.ForeignKey(PersonalProfile, on_delete=models.CASCADE, related_name='education', blank=True, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True )
     financial_institution = models.CharField(max_length=100)
     monthly_amount = models.DecimalField(max_digits=10, decimal_places=2)
     notes = models.TextField(null=True, blank=True)
@@ -110,7 +115,8 @@ class Mortgage(models.Model):
     upfront_cost = models.DecimalField(max_digits=10, decimal_places=2)
 
 class HealthFitness(models.Model):
-    profile = models.ForeignKey(PersonalProfile, on_delete=models.CASCADE, related_name='health_fitness', null=True)
+  #profile = models.ForeignKey(PersonalProfile, on_delete=models.CASCADE, related_name='education', blank=True, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True )
     blood_type = models.CharField(max_length=5, null=True, blank=True)
     allergies = models.TextField(null=True, blank=True)
     medications = models.TextField(null=True, blank=True)
@@ -118,7 +124,8 @@ class HealthFitness(models.Model):
 
 # Travel History
 class TravelHistory(models.Model):
-    profile = models.ForeignKey(PersonalProfile, on_delete=models.CASCADE, related_name='travel_history')
+  #profile = models.ForeignKey(PersonalProfile, on_delete=models.CASCADE, related_name='education', blank=True, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True )
     destination = models.CharField(max_length=100)
     date_start = models.DateField()
     date_end = models.DateField()
@@ -126,7 +133,8 @@ class TravelHistory(models.Model):
 
 # Travel Memberships
 class TravelMembership(models.Model):
-    profile = models.ForeignKey(PersonalProfile, on_delete=models.CASCADE, related_name='travel_memberships')
+  #profile = models.ForeignKey(PersonalProfile, on_delete=models.CASCADE, related_name='education', blank=True, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True )
     type = models.CharField(max_length=50)  # e.g., Hotel, Car Rental
     company = models.CharField(max_length=100)
     membership_number = models.CharField(max_length=50)
@@ -135,7 +143,8 @@ class TravelMembership(models.Model):
 
 # Celebrations
 class Celebration(models.Model):
-    profile = models.ForeignKey(PersonalProfile, on_delete=models.CASCADE, related_name='celebrations')
+  #profile = models.ForeignKey(PersonalProfile, on_delete=models.CASCADE, related_name='education', blank=True, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True )
     event = models.CharField(max_length=100)
     person = models.CharField(max_length=100)
     date = models.DateField()
@@ -144,7 +153,8 @@ class Celebration(models.Model):
 
 # Insurance
 class Insurance(models.Model):
-    profile = models.ForeignKey(PersonalProfile, on_delete=models.CASCADE, related_name='insurance', null = True)
+  #profile = models.ForeignKey(PersonalProfile, on_delete=models.CASCADE, related_name='education', blank=True, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True )
     type = models.CharField(max_length=50, null=True)  # e.g., Car, Home
     provider = models.CharField(max_length=100)
     policy_number = models.CharField(max_length=50)
@@ -155,10 +165,9 @@ class Insurance(models.Model):
     linked_asset = models.CharField(max_length=100)
     notes = models.TextField(null=True, blank=True)
 
-
-
 # Personal Preferences
 class PersonalPreference(models.Model):
-    profile = models.ForeignKey(PersonalProfile, on_delete=models.CASCADE, related_name='personal_preferences')
+  #profile = models.ForeignKey(PersonalProfile, on_delete=models.CASCADE, related_name='education', blank=True, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True )
     type = models.CharField(max_length=50)  # e.g., Cuisine, Movie Genre
     favorite_item = models.CharField(max_length=100)

@@ -28,8 +28,46 @@ class ProfileViewSet(viewsets.ModelViewSet):
     queryset = PersonalProfile.objects.all()
     serializer_class = ProfileSerializer
 
-    def update(self, request, *args, **kwargs):
-        # You can add custom logic here before or after updating the profile
-        # For example, logging or additional validation
-        response = super().update(request, *args, **kwargs)
-        return response
+class EducationViewSet(generics.CreateAPIView):
+    queryset = Education.objects.all()
+    serializer_class = EducationSerializer
+
+    
+    def get(self, request, *args, **kwargs):
+        # Get a specific Education record or list all records
+        if 'pk' in kwargs:
+            # If 'pk' is in the URL, return a single Education object
+            education = self.get_object()
+            serializer = self.get_serializer(education)
+            return Response(serializer.data)
+        else:
+            # If no 'pk', return a list of all Education records
+            education = self.get_queryset()
+            serializer = self.get_serializer(education, many=True)
+            return Response(serializer.data)
+
+    def put(self, request, *args, **kwargs):
+        # Full update (replace the Education record)
+        education = self.get_object()  # Get the specific record to update
+        serializer = self.get_serializer(education, data=request.data)
+        
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def patch(self, request, *args, **kwargs):
+        # Partial update (modify specific fields of the Education record)
+        education = self.get_object()  # Get the specific record to update
+        serializer = self.get_serializer(education, data=request.data, partial=True)
+        
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    # def update(self, request, *args, **kwargs):
+    #     # You can add custom logic here before or after updating the profile
+    #     # For example, logging or additional validation
+    #     response = super().update(request, *args, **kwargs)
+    #     return response
