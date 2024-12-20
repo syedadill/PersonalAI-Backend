@@ -16,13 +16,13 @@ class PersonalProfile(models.Model):
 
 
     def __str__(self):
-        return f"{self.first_name}'s Profile"
+        return f"{self.user.username}'s Profile"
 
 
 
 # Education
 class Education(models.Model):
-    profile = models.ForeignKey(PersonalProfile, on_delete=models.CASCADE, related_name='education')
+    profile = models.ForeignKey(PersonalProfile, on_delete=models.CASCADE, related_name='education', blank=True, null=True)
     date_start = models.DateField()
     date_end = models.DateField(null=True, blank=True)
     institution_name = models.CharField(max_length=100)

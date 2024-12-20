@@ -130,6 +130,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = PersonalProfile
         fields = '__all__'
+      
 
     def create(self, validated_data):
         # Extract nested data
