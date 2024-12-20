@@ -114,18 +114,18 @@ class InsuranceSerializer(serializers.ModelSerializer):
        # field = '__all__'
 
 class ProfileSerializer(serializers.ModelSerializer):
-    education = EducationSerializer(many=True, required=False)
-    work = WorkSerializer(many=True, required=False)
-    family_relationship = FamilyRelationshipSerializer(many=True, required=False)
-    car = CarSerializer(many=True, required=False)
-    real_estate = RealEstateSerializer(many=True, required=False)
-    mortgage = MortgageSerializer(many=True, required=False)
-    health_fitness = HealthFitnessSerializer(many=True, required=False)
-    travel_history = TravelHistorySerializer(many=True, required=False)
-    travel_membership = TravelMembershipSerializer(many=True, required=False)
-    personal_preference = PersonalPreferenceSerializer(many=True, required=False)
-    celebration = CelebrationSerializer(many=True, required=False)
-    insurance = InsuranceSerializer(many=True, required=False)
+    # education = EducationSerializer(many=True, required=False)
+    # work = WorkSerializer(many=True, required=False)
+    # family_relationship = FamilyRelationshipSerializer(many=True, required=False)
+    # car = CarSerializer(many=True, required=False)
+    # real_estate = RealEstateSerializer(many=True, required=False)
+    # mortgage = MortgageSerializer(many=True, required=False)
+    # health_fitness = HealthFitnessSerializer(many=True, required=False)
+    # travel_history = TravelHistorySerializer(many=True, required=False)
+    # travel_membership = TravelMembershipSerializer(many=True, required=False)
+    # personal_preference = PersonalPreferenceSerializer(many=True, required=False)
+    # celebration = CelebrationSerializer(many=True, required=False)
+    # insurance = InsuranceSerializer(many=True, required=False)
 
     class Meta:
         model = PersonalProfile
