@@ -1,1092 +1,165 @@
 {
-    "name": "Profile List",
-    "description": "",
-    "renders": [
-        "application/json",
-        "text/html"
-    ],
-    "parses": [
-        "application/json",
-        "application/x-www-form-urlencoded",
-        "multipart/form-data"
-    ],
-    "actions": {
-        "POST": {
-            "id": {
-                "type": "integer",
-                "required": false,
-                "read_only": true,
-                "label": "ID"
-            },
-            "education": {
-                "type": "field",
-                "required": false,
-                "read_only": false,
-                "label": "Education",
-                "child": {
-                    "type": "nested object",
-                    "required": false,
-                    "read_only": false,
-                    "children": {
-                        "id": {
-                            "type": "integer",
-                            "required": false,
-                            "read_only": true,
-                            "label": "ID"
-                        },
-                        "date_start": {
-                            "type": "date",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Date start"
-                        },
-                        "date_end": {
-                            "type": "date",
-                            "required": false,
-                            "read_only": false,
-                            "label": "Date end"
-                        },
-                        "institution_name": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Institution name",
-                            "max_length": 100
-                        },
-                        "specialty": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Specialty",
-                            "max_length": 100
-                        },
-                        "degree": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Degree",
-                            "max_length": 100
-                        },
-                        "address": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Address"
-                        },
-                        "city": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "City",
-                            "max_length": 50
-                        },
-                        "state": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "State",
-                            "max_length": 50
-                        },
-                        "zip_code": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Zip code",
-                            "max_length": 10
-                        },
-                        "country": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Country",
-                            "max_length": 50
-                        },
-                        "achievements": {
-                            "type": "string",
-                            "required": false,
-                            "read_only": false,
-                            "label": "Achievements"
-                        },
-                        "profile": {
-                            "type": "field",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Profile"
-                        }
-                    }
-                }
-            },
-            "work": {
-                "type": "field",
-                "required": false,
-                "read_only": false,
-                "label": "Work",
-                "child": {
-                    "type": "nested object",
-                    "required": false,
-                    "read_only": false,
-                    "children": {
-                        "id": {
-                            "type": "integer",
-                            "required": false,
-                            "read_only": true,
-                            "label": "ID"
-                        },
-                        "from_date": {
-                            "type": "date",
-                            "required": true,
-                            "read_only": false,
-                            "label": "From date"
-                        },
-                        "to_date": {
-                            "type": "date",
-                            "required": false,
-                            "read_only": false,
-                            "label": "To date"
-                        },
-                        "position": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Position",
-                            "max_length": 100
-                        },
-                        "company": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Company",
-                            "max_length": 100
-                        },
-                        "address": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Address"
-                        },
-                        "city": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "City",
-                            "max_length": 50
-                        },
-                        "state": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "State",
-                            "max_length": 50
-                        },
-                        "zip_code": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Zip code",
-                            "max_length": 10
-                        },
-                        "country": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Country",
-                            "max_length": 50
-                        },
-                        "supervisor_name": {
-                            "type": "string",
-                            "required": false,
-                            "read_only": false,
-                            "label": "Supervisor name",
-                            "max_length": 50
-                        },
-                        "supervisor_phone": {
-                            "type": "string",
-                            "required": false,
-                            "read_only": false,
-                            "label": "Supervisor phone",
-                            "max_length": 20
-                        },
-                        "supervisor_email": {
-                            "type": "email",
-                            "required": false,
-                            "read_only": false,
-                            "label": "Supervisor email",
-                            "max_length": 254
-                        },
-                        "responsibilities": {
-                            "type": "string",
-                            "required": false,
-                            "read_only": false,
-                            "label": "Responsibilities"
-                        },
-                        "achievements": {
-                            "type": "string",
-                            "required": false,
-                            "read_only": false,
-                            "label": "Achievements"
-                        },
-                        "profile": {
-                            "type": "field",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Profile"
-                        }
-                    }
-                }
-            },
-            "family_relationship": {
-                "type": "field",
-                "required": false,
-                "read_only": false,
-                "label": "Family relationship",
-                "child": {
-                    "type": "nested object",
-                    "required": false,
-                    "read_only": false,
-                    "children": {
-                        "id": {
-                            "type": "integer",
-                            "required": false,
-                            "read_only": true,
-                            "label": "ID"
-                        },
-                        "name": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Name",
-                            "max_length": 100
-                        },
-                        "relationship": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Relationship",
-                            "max_length": 50
-                        },
-                        "birthday": {
-                            "type": "date",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Birthday"
-                        },
-                        "notes": {
-                            "type": "string",
-                            "required": false,
-                            "read_only": false,
-                            "label": "Notes"
-                        },
-                        "phone": {
-                            "type": "string",
-                            "required": false,
-                            "read_only": false,
-                            "label": "Phone",
-                            "max_length": 20
-                        },
-                        "email": {
-                            "type": "email",
-                            "required": false,
-                            "read_only": false,
-                            "label": "Email",
-                            "max_length": 254
-                        },
-                        "profile": {
-                            "type": "field",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Profile"
-                        }
-                    }
-                }
-            },
-            "car": {
-                "type": "field",
-                "required": false,
-                "read_only": false,
-                "label": "Car",
-                "child": {
-                    "type": "nested object",
-                    "required": false,
-                    "read_only": false,
-                    "children": {
-                        "id": {
-                            "type": "integer",
-                            "required": false,
-                            "read_only": true,
-                            "label": "ID"
-                        },
-                        "make": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Make",
-                            "max_length": 50
-                        },
-                        "model": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Model",
-                            "max_length": 50
-                        },
-                        "year": {
-                            "type": "integer",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Year",
-                            "min_value": -2147483648,
-                            "max_value": 2147483647
-                        },
-                        "vin": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Vin",
-                            "max_length": 50
-                        },
-                        "licence_plate": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Licence plate",
-                            "max_length": 20
-                        },
-                        "color": {
-                            "type": "string",
-                            "required": false,
-                            "read_only": false,
-                            "label": "Color",
-                            "max_length": 20
-                        },
-                        "date_purchased": {
-                            "type": "date",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Date purchased"
-                        },
-                        "odometer_at_purchase": {
-                            "type": "integer",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Odometer at purchase",
-                            "min_value": -2147483648,
-                            "max_value": 2147483647
-                        },
-                        "total_purchase_price": {
-                            "type": "decimal",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Total purchase price",
-                            "max_digits": 10,
-                            "decimal_places": 2
-                        },
-                        "interest_rate": {
-                            "type": "float",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Interest rate"
-                        },
-                        "down_payment": {
-                            "type": "decimal",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Down payment",
-                            "max_digits": 10,
-                            "decimal_places": 2
-                        },
-                        "financed_amount": {
-                            "type": "decimal",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Financed amount",
-                            "max_digits": 10,
-                            "decimal_places": 2
-                        },
-                        "monthly_payment": {
-                            "type": "decimal",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Monthly payment",
-                            "max_digits": 10,
-                            "decimal_places": 2
-                        },
-                        "profile": {
-                            "type": "field",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Profile"
-                        }
-                    }
-                }
-            },
-            "real_estate": {
-                "type": "field",
-                "required": false,
-                "read_only": false,
-                "label": "Real estate",
-                "child": {
-                    "type": "nested object",
-                    "required": false,
-                    "read_only": false,
-                    "children": {
-                        "id": {
-                            "type": "integer",
-                            "required": false,
-                            "read_only": true,
-                            "label": "ID"
-                        },
-                        "type": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Type",
-                            "max_length": 50
-                        },
-                        "sq_ft": {
-                            "type": "integer",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Sq ft",
-                            "min_value": -2147483648,
-                            "max_value": 2147483647
-                        },
-                        "lot_size": {
-                            "type": "integer",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Lot size",
-                            "min_value": -2147483648,
-                            "max_value": 2147483647
-                        },
-                        "address": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Address"
-                        },
-                        "city": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "City",
-                            "max_length": 50
-                        },
-                        "state": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "State",
-                            "max_length": 50
-                        },
-                        "zip_code": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Zip code",
-                            "max_length": 10
-                        },
-                        "country": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Country",
-                            "max_length": 50
-                        },
-                        "year_built": {
-                            "type": "integer",
-                            "required": false,
-                            "read_only": false,
-                            "label": "Year built",
-                            "min_value": -2147483648,
-                            "max_value": 2147483647
-                        },
-                        "profile": {
-                            "type": "field",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Profile"
-                        }
-                    }
-                }
-            },
-            "mortgage": {
-                "type": "field",
-                "required": false,
-                "read_only": false,
-                "label": "Mortgage",
-                "child": {
-                    "type": "nested object",
-                    "required": false,
-                    "read_only": false,
-                    "children": {
-                        "id": {
-                            "type": "integer",
-                            "required": false,
-                            "read_only": true,
-                            "label": "ID"
-                        },
-                        "financial_institution": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Financial institution",
-                            "max_length": 100
-                        },
-                        "monthly_amount": {
-                            "type": "decimal",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Monthly amount",
-                            "max_digits": 10,
-                            "decimal_places": 2
-                        },
-                        "notes": {
-                            "type": "string",
-                            "required": false,
-                            "read_only": false,
-                            "label": "Notes"
-                        },
-                        "start_date": {
-                            "type": "date",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Start date"
-                        },
-                        "period": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Period",
-                            "max_length": 10
-                        },
-                        "property_cost": {
-                            "type": "decimal",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Property cost",
-                            "max_digits": 10,
-                            "decimal_places": 2
-                        },
-                        "down_percent": {
-                            "type": "float",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Down percent"
-                        },
-                        "down_payment": {
-                            "type": "decimal",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Down payment",
-                            "max_digits": 10,
-                            "decimal_places": 2
-                        },
-                        "loan_amount": {
-                            "type": "decimal",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Loan amount",
-                            "max_digits": 10,
-                            "decimal_places": 2
-                        },
-                        "interest_rate": {
-                            "type": "float",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Interest rate"
-                        },
-                        "apr": {
-                            "type": "float",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Apr"
-                        },
-                        "upfront_cost": {
-                            "type": "decimal",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Upfront cost",
-                            "max_digits": 10,
-                            "decimal_places": 2
-                        },
-                        "real_estate": {
-                            "type": "field",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Real estate"
-                        }
-                    }
-                }
-            },
-            "health_fitness": {
-                "type": "field",
-                "required": false,
-                "read_only": false,
-                "label": "Health fitness",
-                "child": {
-                    "type": "nested object",
-                    "required": false,
-                    "read_only": false,
-                    "children": {
-                        "id": {
-                            "type": "integer",
-                            "required": false,
-                            "read_only": true,
-                            "label": "ID"
-                        },
-                        "blood_type": {
-                            "type": "string",
-                            "required": false,
-                            "read_only": false,
-                            "label": "Blood type",
-                            "max_length": 5
-                        },
-                        "allergies": {
-                            "type": "string",
-                            "required": false,
-                            "read_only": false,
-                            "label": "Allergies"
-                        },
-                        "medications": {
-                            "type": "string",
-                            "required": false,
-                            "read_only": false,
-                            "label": "Medications"
-                        },
-                        "chronic_conditions": {
-                            "type": "string",
-                            "required": false,
-                            "read_only": false,
-                            "label": "Chronic conditions"
-                        },
-                        "profile": {
-                            "type": "field",
-                            "required": false,
-                            "read_only": false,
-                            "label": "Profile"
-                        }
-                    }
-                }
-            },
-            "travel_history": {
-                "type": "field",
-                "required": false,
-                "read_only": false,
-                "label": "Travel history",
-                "child": {
-                    "type": "nested object",
-                    "required": false,
-                    "read_only": false,
-                    "children": {
-                        "id": {
-                            "type": "integer",
-                            "required": false,
-                            "read_only": true,
-                            "label": "ID"
-                        },
-                        "destination": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Destination",
-                            "max_length": 100
-                        },
-                        "date_start": {
-                            "type": "date",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Date start"
-                        },
-                        "date_end": {
-                            "type": "date",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Date end"
-                        },
-                        "purpose": {
-                            "type": "string",
-                            "required": false,
-                            "read_only": false,
-                            "label": "Purpose",
-                            "max_length": 100
-                        },
-                        "notes": {
-                            "type": "string",
-                            "required": false,
-                            "read_only": false,
-                            "label": "Notes"
-                        },
-                        "profile": {
-                            "type": "field",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Profile"
-                        }
-                    }
-                }
-            },
-            "travel_membership": {
-                "type": "field",
-                "required": false,
-                "read_only": false,
-                "label": "Travel membership",
-                "child": {
-                    "type": "nested object",
-                    "required": false,
-                    "read_only": false,
-                    "children": {
-                        "id": {
-                            "type": "integer",
-                            "required": false,
-                            "read_only": true,
-                            "label": "ID"
-                        },
-                        "type": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Type",
-                            "max_length": 50
-                        },
-                        "company": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Company",
-                            "max_length": 100
-                        },
-                        "membership_number": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Membership number",
-                            "max_length": 50
-                        },
-                        "status": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Status",
-                            "max_length": 50
-                        },
-                        "rewards_balance": {
-                            "type": "decimal",
-                            "required": false,
-                            "read_only": false,
-                            "label": "Rewards balance",
-                            "max_digits": 10,
-                            "decimal_places": 2
-                        },
-                        "notes": {
-                            "type": "string",
-                            "required": false,
-                            "read_only": false,
-                            "label": "Notes"
-                        },
-                        "profile": {
-                            "type": "field",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Profile"
-                        }
-                    }
-                }
-            },
-            "personal_preference": {
-                "type": "field",
-                "required": false,
-                "read_only": false,
-                "label": "Personal preference",
-                "child": {
-                    "type": "nested object",
-                    "required": false,
-                    "read_only": false,
-                    "children": {
-                        "id": {
-                            "type": "integer",
-                            "required": false,
-                            "read_only": true,
-                            "label": "ID"
-                        },
-                        "type": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Type",
-                            "max_length": 50
-                        },
-                        "favorite_item": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Favorite item",
-                            "max_length": 100
-                        },
-                        "profile": {
-                            "type": "field",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Profile"
-                        }
-                    }
-                }
-            },
-            "celebration": {
-                "type": "field",
-                "required": false,
-                "read_only": false,
-                "label": "Celebration",
-                "child": {
-                    "type": "nested object",
-                    "required": false,
-                    "read_only": false,
-                    "children": {
-                        "id": {
-                            "type": "integer",
-                            "required": false,
-                            "read_only": true,
-                            "label": "ID"
-                        },
-                        "event": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Event",
-                            "max_length": 100
-                        },
-                        "person": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Person",
-                            "max_length": 100
-                        },
-                        "date": {
-                            "type": "date",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Date"
-                        },
-                        "first_event_date": {
-                            "type": "date",
-                            "required": true,
-                            "read_only": false,
-                            "label": "First event date"
-                        },
-                        "notes": {
-                            "type": "string",
-                            "required": false,
-                            "read_only": false,
-                            "label": "Notes"
-                        },
-                        "profile": {
-                            "type": "field",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Profile"
-                        }
-                    }
-                }
-            },
-            "insurance": {
-                "type": "field",
-                "required": false,
-                "read_only": false,
-                "label": "Insurance",
-                "child": {
-                    "type": "nested object",
-                    "required": false,
-                    "read_only": false,
-                    "children": {
-                        "id": {
-                            "type": "integer",
-                            "required": false,
-                            "read_only": true,
-                            "label": "ID"
-                        },
-                        "type": {
-                            "type": "string",
-                            "required": false,
-                            "read_only": false,
-                            "label": "Type",
-                            "max_length": 50
-                        },
-                        "provider": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Provider",
-                            "max_length": 100
-                        },
-                        "policy_number": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Policy number",
-                            "max_length": 50
-                        },
-                        "start_date": {
-                            "type": "date",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Start date"
-                        },
-                        "end_date": {
-                            "type": "date",
-                            "required": false,
-                            "read_only": false,
-                            "label": "End date"
-                        },
-                        "premium": {
-                            "type": "decimal",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Premium",
-                            "max_digits": 10,
-                            "decimal_places": 2
-                        },
-                        "coverage_details": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Coverage details"
-                        },
-                        "linked_asset": {
-                            "type": "string",
-                            "required": true,
-                            "read_only": false,
-                            "label": "Linked asset",
-                            "max_length": 100
-                        },
-                        "notes": {
-                            "type": "string",
-                            "required": false,
-                            "read_only": false,
-                            "label": "Notes"
-                        },
-                        "profile": {
-                            "type": "field",
-                            "required": false,
-                            "read_only": false,
-                            "label": "Profile"
-                        }
-                    }
-                }
-            },
-            "first_name": {
-                "type": "string",
-                "required": true,
-                "read_only": false,
-                "label": "First name",
-                "max_length": 50
-            },
-            "last_name": {
-                "type": "string",
-                "required": true,
-                "read_only": false,
-                "label": "Last name",
-                "max_length": 50
-            },
-            "middle_name": {
-                "type": "string",
-                "required": false,
-                "read_only": false,
-                "label": "Middle name",
-                "max_length": 50
-            },
-            "date_of_birth": {
-                "type": "date",
-                "required": false,
-                "read_only": false,
-                "label": "Date of birth"
-            },
-            "gender": {
-                "type": "choice",
-                "required": true,
-                "read_only": false,
-                "label": "Gender",
-                "choices": [
-                    {
-                        "value": "Male",
-                        "display_name": "Male"
-                    },
-                    {
-                        "value": "Female",
-                        "display_name": "Female"
-                    },
-                    {
-                        "value": "Other",
-                        "display_name": "Other"
-                    }
-                ]
-            },
-            "address": {
-                "type": "string",
-                "required": true,
-                "read_only": false,
-                "label": "Address"
-            },
-            "city": {
-                "type": "string",
-                "required": true,
-                "read_only": false,
-                "label": "City",
-                "max_length": 50
-            },
-            "state": {
-                "type": "string",
-                "required": true,
-                "read_only": false,
-                "label": "State",
-                "max_length": 50
-            },
-            "country": {
-                "type": "string",
-                "required": true,
-                "read_only": false,
-                "label": "Country",
-                "max_length": 50
-            },
-            "zip_code": {
-                "type": "string",
-                "required": true,
-                "read_only": false,
-                "label": "Zip code",
-                "max_length": 10
-            },
-            "phone": {
-                "type": "string",
-                "required": true,
-                "read_only": false,
-                "label": "Phone",
-                "max_length": 20
-            },
-            "email": {
-                "type": "email",
-                "required": true,
-                "read_only": false,
-                "label": "Email",
-                "max_length": 254
-            },
-            "nationality": {
-                "type": "string",
-                "required": true,
-                "read_only": false,
-                "label": "Nationality",
-                "max_length": 50
-            },
-            "languages_spoken": {
-                "type": "string",
-                "required": true,
-                "read_only": false,
-                "label": "Languages spoken"
-            },
-            "user": {
-                "type": "field",
-                "required": true,
-                "read_only": false,
-                "label": "User"
-            }
+    
+    "personal_profile": {
+      "first_name": "John",
+      "last_name": "Doe",
+      "date_of_birth": "1990-01-01",
+      "address": "123 Main Street",
+      "phone": "1234567890",
+      "email": "johndoe@example.com",
+      "nationality": "American",
+      "languages_spoken": "English, Spanish",
+      "education": [
+        {
+          
+          "date_start": "2005-09-01",
+          "date_end": "2009-06-01",
+          "institution_name": "High School ABC",
+          "specialty": "Science",
+          "degree": "High School Diploma",
+          "address": "123 High School Lane",
+          "city": "Cityville",
+          "state": "Stateville",
+          "zip_code": "12345",
+          "country": "USA",
+          "achievements": "Top 10% of class"
         }
+      ],
+      "work": [
+        {
+          
+          "from_date": "2010-01-01",
+          "to_date": "2015-01-01",
+          "position": "Software Engineer",
+          "company": "TechCorp",
+          "address": "456 Tech Street",
+          "city": "TechCity",
+          "state": "TechState",
+          "zip_code": "67890",
+          "country": "USA",
+          "supervisor_name": "Jane Smith",
+          "supervisor_phone": "0987654321",
+          "supervisor_email": "jane.smith@example.com",
+          "responsibilities": "Developed software solutions",
+          "achievements": "Employee of the Year 2014"
+        }
+      ],
+      "family_relationship": [
+        {
+          "id": 1,
+          "name": "Jane Doe",
+          "relationship": "Spouse",
+          "birthday": "1992-01-01",
+          "notes": "Met in college",
+          "phone": "1234567890",
+          "email": "janedoe@example.com"
+        }
+      ],
+      "car": [
+        {
+          "id": 1,
+          "make": "Toyota",
+          "model": "Camry",
+          "year": 2020,
+          "vin": "123ABC456DEF789GH",
+          "licence_plate": "ABC123",
+          "date_purchased": "2020-01-01",
+          "odometer_at_purchase": 10000,
+          "total_purchase_price": 25000.00,
+          "interest_rate": 3.5,
+          "down_payment": 5000.00,
+          "financed_amount": 20000.00,
+          "monthly_payment": 350.00
+        }
+      ],
+      "real_estate": [
+        {
+          "id": 1,
+          "type": "House",
+          "sq_ft": 2000,
+          "lot_size": 5000,
+          "address": "789 Estate Drive",
+          "city": "Cityland",
+          "state": "Stateland",
+          "zip_code": "54321",
+          "country": "USA",
+          "year_built": 1995
+        }
+      ],
+      "mortgage": [
+        {
+          "id": 1,
+          "real_estate": 1,
+          "financial_institution": "BankCorp",
+          "monthly_amount": 1500.00,
+          "notes": "Fixed rate mortgage",
+          "start_date": "2020-01-01",
+          "period": "30Y",
+          "property_cost": 300000.00,
+          "down_percent": 20.0,
+          "down_payment": 60000.00,
+          "loan_amount": 240000.00,
+          "interest_rate": 4.0,
+          "apr": 4.2,
+          "upfront_cost": 5000.00
+        }
+      ],
+      "health_fitness": {
+        "id": 1,
+        "blood_type": "O+",
+        "allergies": "Peanuts",
+        "medications": "Ibuprofen"
+      },
+      "travel_history": [
+        {
+          "id": 1,
+          "destination": "Paris",
+          "date_start": "2022-01-01",
+          "date_end": "2022-01-10",
+          "notes": "Vacation with family"
+        }
+      ],
+      "travel_membership": [
+        {
+          "id": 1,
+          "type": "Hotel",
+          "company": "HotelChain",
+          "membership_number": "123456",
+          "status": "Gold",
+          "notes": "Earned free stays"
+        }
+      ],
+      "personal_preference": [
+        {
+          "id": 1,
+          "type": "Cuisine",
+          "favorite_item": "Italian"
+        }
+      ],
+      "celebration": [
+        {
+          "id": 1,
+          "event": "Anniversary",
+          "person": "Jane Doe",
+          "date": "2022-01-01",
+          "first_event_date": "2015-01-01",
+          "notes": "7th anniversary celebration"
+        }
+      ],
+      "insurance": [
+        {
+          "id": 1,
+          "type": "Car",
+          "provider": "InsuranceCorp",
+          "policy_number": "POL12345",
+          "start_date": "2020-01-01",
+          "end_date": "2025-01-01",
+          "premium": 1200.00,
+          "coverage_details": "Comprehensive",
+          "linked_asset": "Toyota Camry",
+          "notes": "Includes roadside assistance"
+        }
+      ]
     }
-}
+  }
+  
