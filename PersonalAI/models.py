@@ -22,7 +22,8 @@ class PersonalProfile(models.Model):
 
 # Education
 class Education(models.Model):
-    profile = models.ForeignKey(PersonalProfile, on_delete=models.CASCADE, related_name='education', blank=True, null=True)
+#profile = models.ForeignKey(PersonalProfile, on_delete=models.CASCADE, related_name='education', blank=True, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True )
     date_start = models.DateField()
     date_end = models.DateField(null=True, blank=True)
     institution_name = models.CharField(max_length=100)
