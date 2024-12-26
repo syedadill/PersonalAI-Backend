@@ -2,7 +2,7 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-from .views import RegisterView, ProfileViewSet, EducationViewSet, WorkViewSet
+from .views import RegisterView, ProfileViewSet, EducationViewSet, WorkViewSet, FamilyRelationshipViewSet
 # from PersonalAI.views import ai_response
 from rest_framework.authtoken.views import obtain_auth_token
 
@@ -24,5 +24,7 @@ urlpatterns = [
     # path('ai-response/', ai_response, name='ai_response'),
     path('education/<int:pk>/', EducationViewSet.as_view(), name='education'),
     path('work/<int:pk>/', WorkViewSet.as_view(), name='work'),
+     path('family/<int:pk>/', FamilyRelationshipViewSet.as_view(), name='family'),
     path('', include(router.urls)),
+
 ]
