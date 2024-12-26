@@ -71,3 +71,41 @@ class EducationViewSet(generics.CreateAPIView):
     #     # For example, logging or additional validation
     #     response = super().update(request, *args, **kwargs)
     #     return response
+
+class WorkViewSet(generics.CreateAPIView):
+    queryset = Work.objects.all()
+    serializer_class = WorkSerializer
+
+    
+    def get(self, request, *args, **kwargs):
+        # Get a specific Education record or list all records
+        if 'pk' in kwargs:
+            # If 'pk' is in the URL, return a single Education object
+            work = self.get_object()
+            serializer = self.get_serializer(work)
+            return Response(serializer.data)
+        else:
+            # If no 'pk', return a list of all Education records
+            work = self.get_queryset()
+            serializer = self.get_serializer(work, many=True)
+            return Response(serializer.data)
+
+    def put(self, request, *args, **kwargs):
+        # Full update (replace the Education record)
+        work = self.get_object()  # Get the specific record to update
+        serializer = self.get_serializer(work, data=request.data)
+        
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def patch(self, request, *args, **kwargs):
+        # Partial update (modify specific fields of the Education record)
+        work = self.get_object()  # Get the specific record to update
+        serializer = self.get_serializer(work, data=request.data, partial=True)
+        
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
