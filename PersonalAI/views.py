@@ -160,6 +160,9 @@ from .serializers import ChatRequestSerializer, UploadFileSerializer
 pc = Pinecone(api_key='pcsk_nxkBs_AHUzeDQhEm7p3JNuyM6hWPt3BYjn26wQUhSipqskXYQKDLYDBHLS23dmNY1RVoq')
 assistant = pc.assistant.Assistant(assistant_name="aadi878")
 
+
+
+
 # Chat with the assistant
 class ChatWithAssistant(APIView):
     def post(self, request):
