@@ -26,6 +26,11 @@ SECRET_KEY = 'django-insecure-zl!26b685k9+tj5!*j51pakmidti0r-cp2=5w*9ey4xmujo!2g
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://personalai-backend.onrender.com']
+
+
+CSRF_COOKIE_SECURE = True  # Ensures CSRF cookie is sent only over HTTPS
+SESSION_COOKIE_SECURE = True  # Ensures session cookie is sent only over HTTPS
 
 
 # Application definition
@@ -43,7 +48,7 @@ INSTALLED_APPS = [
     'corsheaders',  # To handle CORS
     'channels',
     'rest_framework.authtoken'
-    
+
 ]
 
 MIDDLEWARE = [
