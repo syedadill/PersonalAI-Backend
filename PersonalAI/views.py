@@ -168,7 +168,7 @@ from django.utils.decorators import method_decorator
 @method_decorator(csrf_exempt, name='dispatch')
 # Chat with the assistant
 class ChatWithAssistant(APIView):
-    def post(self, request):
+    def post(self, request, *args, **kwargs):
         serializer = ChatRequestSerializer(data=request.data)
         if serializer.is_valid():
             user_message = serializer.validated_data['message']
