@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'corsheaders',  # To handle CORS
     'channels',
     'rest_framework.authtoken'
+    
 ]
 
 MIDDLEWARE = [
