@@ -173,13 +173,23 @@ class ChatWithAssistant(APIView):
             return Response({"message": assistant_reply}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-# Upload a file to the assistant
+from django.core.files.storage import default_storage
+from django.conf import settings
+# Upload a file to the assistant# Upload a file to the assistant
 class UploadFile(APIView):
     def post(self, request):
         serializer = UploadFileSerializer(data=request.data)
         if serializer.is_valid():
-            file = request.FILES['file']
-            # Upload file to assistant (assuming the assistant has an upload_file method)
-            response = assistant.upload_file(file_path=file.name, timeout=None)  # Replace with correct file path handling if needed
-            return Response({"message": "File uploaded successfully", "response": response}, status=status.HTTP_200_OK)
+            uploaded_file = request.FILES['file']
+
+            # Save the uploaded file temporarily
+            file_path = default_storage.save(uploaded_file.name, uploaded_file)
+            full_file_path = f"{settings.MEDIA_ROOT}/{file_path}"
+
+            try:
+                # Upload file to assistant
+                response = assistant.upload_file(file_path=full_file_path, timeout=None)
+                return Response({"message": "File uploaded successfully", "response": response}, status=status.HTTP_200_OK)
+            except Exception as e:
+                return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

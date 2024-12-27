@@ -28,6 +28,4 @@ urlpatterns = [
     path('chat/', ChatWithAssistant.as_view(), name='chat_with_assistant'),
     path('upload/', UploadFile.as_view(), name='upload_file'),
     # path('profiles/', ProfileDetailView.as_view(), name ='profiles')
-
-
 ]
