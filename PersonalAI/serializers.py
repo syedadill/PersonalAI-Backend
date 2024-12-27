@@ -34,79 +34,82 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.set_password(validated_data['password'])
         user.save()
         
-        # Create a Profile instance for the new user
-        PersonalProfile.objects.create(user=user)
+        # # Create a Profile instance for the new user
+        # Profile.objects.create(user=user)
 
-        return user
+        # return user
 
-class ProfileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PersonalProfile
-        fields = '__all__'
+# class ProfileSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Profile
+#         fields = '__all__'
       
 
-class EducationSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Education
-        fields = '__all__'
+# class EducationSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Education
+#         fields = '__all__'
         
 
-class WorkSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Work
-        fields = '__all__'
+# class WorkSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Work
+#         fields = '__all__'
 
-class FamilyRelationshipSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = FamilyRelationship
-        fields = '__all__'
+# class FamilyRelationshipSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = FamilyRelationship
+#         fields = '__all__'
 
-class CarSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Car
-        fields = '__all__'
+# class CarSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Car
+#         fields = '__all__'
 
-class RealEstateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = RealEstate
-        fields = '__all__'
+# class RealEstateSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = RealEstate
+#         fields = '__all__'
 
-class MortgageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Mortgage
-        fields = '__all__'
+# class MortgageSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Mortgage
+#         fields = '__all__'
 
-class HealthFitnessSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = HealthFitness
-        fields = '__all__'
+# class HealthFitnessSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = HealthFitness
+#         fields = '__all__'
 
-class TravelHistorySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = TravelHistory
-        fields = '__all__'
+# class TravelHistorySerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = TravelHistory
+#         fields = '__all__'
 
-class TravelMembershipSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = TravelMembership
-        fields = '__all__'
+# class TravelMembershipSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = TravelMembership
+#         fields = '__all__'
 
-class PersonalPreferenceSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PersonalPreference
-        fields = '__all__'
+# class PersonalPreferenceSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = PersonalPreference
+#         fields = '__all__'
 
-class CelebrationSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Celebration
-        fields = '__all__'
-
-
-class InsuranceSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Insurance
-        fields = '__all__'
+# class CelebrationSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Celebration
+#         fields = '__all__'
 
 
+# class InsuranceSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Insurance
+#         fields = '__all__'
 
-    
+
+class ChatRequestSerializer(serializers.Serializer):
+    message = serializers.CharField(max_length=1000)
+
+class UploadFileSerializer(serializers.Serializer):
+    file = serializers.FileField()
