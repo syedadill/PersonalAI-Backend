@@ -162,7 +162,10 @@ assistant = pc.assistant.Assistant(assistant_name="aadi878")
 
 
 
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 
+@method_decorator(csrf_exempt, name='dispatch')
 # Chat with the assistant
 class ChatWithAssistant(APIView):
     def post(self, request):
